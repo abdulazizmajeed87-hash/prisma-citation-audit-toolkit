@@ -1,13 +1,16 @@
-# PRISMA Citation & Corpus Audit Toolkit
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
 
-Deterministic Python CLI and library for auditing **PRISMA 2020** and **SWiM** engineering systematic reviews against citation drift, full-text version mismatches, and strict journal word-budget limits.
+[project]
+name = "prisma-citation-audit-toolkit"
+version = "0.1.0"
+description = "Deterministic Python utilities for bidirectional citation sequencing, SHA-256 corpus verification, and word-budget auditing in PRISMA systematic reviews."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "Abdulaziz Majeed", email = "A.Majeed-2@sms.ed.ac.uk"}]
+py-modules = ["prisma_audit"]
 
-## Key Capabilities
-- **Bidirectional Citation Sequencing:** Parses OpenXML (`.docx`) manuscripts across body prose, captions, footnotes, and table cells to certify strict sequential first-appearance reference ordering with zero orphan entries or range gaps.
-- **Cryptographic Corpus Provenance:** Validates local full-text PDF repositories against master SHA-256 registries so primary articles, supplements, and corrigenda never drift silently.
-- **Hardened Archive Inspection:** Enforces path-traversal guards and XML payload ceilings when inspecting external `.docx` archives.
-
-## Quickstart
-```bash
-python prisma_audit.py docx path/to/manuscript.docx
-python prisma_audit.py manifest path/to/corpus_index.csv
+[project.scripts]
+prisma-audit = "prisma_audit:main"
