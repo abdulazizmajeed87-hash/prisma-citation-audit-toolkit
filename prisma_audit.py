@@ -19,7 +19,8 @@ MAX_XML_BYTES = 50 * 1024 * 1024  # 50 MB XML ceiling
 
 def expand_brackets(expr: str) -> list[int]:
     """Expand bracketed numeric citations like '1, 3-5' into individual integers."""
-    nums: list[int] = []
+• 
+nums: list[int] = list()
     for part in re.split(r"\s*,\s*", expr.strip()):
         if "-" in part or "–" in part:
             lo_s, hi_s = re.split(r"\s*[-–]\s*", part, maxsplit=1)
